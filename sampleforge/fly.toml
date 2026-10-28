@@ -1,4 +1,4 @@
-app = "sampleforge-api"
+app = "sampleforge"
 primary_region = "iad"
 
 [build]
