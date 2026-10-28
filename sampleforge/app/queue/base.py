@@ -13,7 +13,7 @@ class QueueBackend(Protocol):
 
 
 async def enqueue_job(job_id: str) -> str | None:
-    """Enqueue via configured backend. Falls back to arq for backward compat."""
+    """Enqueue via configured backend."""
     from app.core.config import settings
 
     backend = getattr(settings, "queue_backend", "arq")
@@ -21,12 +21,10 @@ async def enqueue_job(job_id: str) -> str | None:
         from app.queue.http import enqueue_job as _enqueue
 
         return await _enqueue(job_id)
-    # Default to existing arq backend (used by worker)
+    # Try arq only if available (worker environment)
     try:
-        from app.workers.queue import enqueue_job as _enqueue
+        from app.workers.queue import enqueue_job as _enqueue  # lazy
 
         return await _enqueue(job_id)
     except Exception as exc:
-        from app.queue.base import QueueUnavailableError
-
         raise QueueUnavailableError(str(exc)) from exc

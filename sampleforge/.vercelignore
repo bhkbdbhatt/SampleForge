@@ -1,0 +1,56 @@
+# Exclude heavy deps and worker code
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.git/
+alembic/
+tests/
+app/workers/
+app/generation/
+app/services/generation.py
+app/services/constraint.py
+app/services/encoding.py
+app/services/postprocess*  # not exists
+app/generation/
+uv.lock
+pyproject.toml
+Dockerfile
+docker-compose.yml
+node_modules/
+*.tar.gz
+*.whl
+worker*
+.env
+.env.example
+Dockerfile
+Makefile
+polling
+app/workers/
+var/
+_data/
+models/
+checkpoints/
+weights/
+notebooks/
+*.bin
+*.pt
+*.ckpt
+*.safetensors
+*cuda*
+torch*
+librosa*
+numba*
+scipy*
+soundfile*
+boto3*  # keep? we need boto3 for s3, it's small
+redis*  # keep
+sqlalchemy* # keep
+fastapi* # keep
+httpx* # keep
+*arq*  # might be pulled
+anthropic*
+openai*
+triton*
+nvidia*
+ിങ്ക

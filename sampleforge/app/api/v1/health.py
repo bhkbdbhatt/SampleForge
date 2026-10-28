@@ -31,20 +31,13 @@ ARQ_QUEUE_KEY = "arq:queue"
 
 
 def gpu_available() -> bool:
-    """Whether a CUDA device is usable.
-
-    Imported lazily and defensively: torch is a heavy optional dependency, and a
-    health check must not be the thing that turns a missing install into a
-    crash.
-    """
+    """Whether a CUDA device is usable."""
     try:
-        import torch
+        import importlib
 
-        return bool(torch.cuda.is_available())
-    except Exception:  # noqa: BLE001 - torch raises more than ImportError here
-        # A broken CUDA driver surfaces as a RuntimeError from
-        # torch.cuda.is_available(), and an absent torch as ImportError. A
-        # health check answers "can we use a GPU" either way.
+        torch = importlib.import_module("torch")
+        return bool(getattr(torch.cuda, "is_available", lambda: False)())
+    except Exception:
         return False
 
 

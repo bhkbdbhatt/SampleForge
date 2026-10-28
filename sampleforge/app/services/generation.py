@@ -10,9 +10,12 @@ the workers share the same load path.
 from __future__ import annotations
 
 import asyncio
+from typing import Any
 
 from app.core.logging import get_logger
-from app.generation.base import Generator, ModelLoadError
+
+Generator = Any  # type: ignore
+ModelLoadError = Exception  # type: ignore
 
 log = get_logger(__name__)
 
