@@ -30,7 +30,7 @@ from app.models.schemas import (
     RecipeRunResponse,
     RecipeUpdate,
 )
-from app.workers.queue import enqueue_job
+from app.queue import enqueue_job
 
 log = get_logger(__name__)
 

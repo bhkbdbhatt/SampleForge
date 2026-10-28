@@ -22,7 +22,7 @@ from app.core.security import ApiKey, limiter
 from app.db.session import SessionDep
 from app.models.db import GenerationJob
 from app.models.schemas import STATUS_QUEUED, GenerationSpec, JobSubmitResponse
-from app.workers.queue import enqueue_job
+from app.queue import enqueue_job
 
 log = get_logger(__name__)
 
