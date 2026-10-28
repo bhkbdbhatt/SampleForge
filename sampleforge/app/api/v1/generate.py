@@ -101,7 +101,7 @@ async def create_job(
     ),
     responses={
         status.HTTP_401_UNAUTHORIZED: {"description": "Missing or invalid API key."},
-        status.HTTP_422_UNPROCESSABLE_CONTENT: {
+        422: {
             "description": "The spec is invalid or violates a hard constraint."
         },
         status.HTTP_429_TOO_MANY_REQUESTS: {

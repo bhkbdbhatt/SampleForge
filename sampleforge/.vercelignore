@@ -11,8 +11,6 @@ app/generation/
 app/services/generation.py
 app/services/constraint.py
 app/services/encoding.py
-app/services/postprocess*  # not exists
-app/generation/
 uv.lock
 pyproject.toml
 Dockerfile
@@ -23,13 +21,10 @@ node_modules/
 worker*
 .env
 .env.example
-Dockerfile
 Makefile
 polling
-app/workers/
 var/
 _data/
-models/
 checkpoints/
 weights/
 notebooks/
@@ -43,14 +38,7 @@ librosa*
 numba*
 scipy*
 soundfile*
-boto3*  # keep? we need boto3 for s3, it's small
-redis*  # keep
-sqlalchemy* # keep
-fastapi* # keep
-httpx* # keep
-*arq*  # might be pulled
 anthropic*
 openai*
 triton*
 nvidia*
-ിങ്ക

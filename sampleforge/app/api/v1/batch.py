@@ -72,7 +72,7 @@ def batch_limit() -> str:
     ),
     responses={
         status.HTTP_401_UNAUTHORIZED: {"description": "Missing or invalid API key."},
-        status.HTTP_422_UNPROCESSABLE_CONTENT: {"description": "One or more specs are invalid."},
+        422: {"description": "One or more specs are invalid."},
         status.HTTP_429_TOO_MANY_REQUESTS: {"description": "Rate limit exceeded."},
         status.HTTP_503_SERVICE_UNAVAILABLE: {
             "description": "The API is unconfigured, or the job queue is unreachable."
